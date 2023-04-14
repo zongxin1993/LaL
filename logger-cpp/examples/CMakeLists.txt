@@ -1,0 +1,1 @@
+add_examples_executable(logger-cpp-example .)
