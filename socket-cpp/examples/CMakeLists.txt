@@ -1,0 +1,2 @@
+add_examples_executable(lal_client_example .)
+add_examples_executable(lal_server_example .)

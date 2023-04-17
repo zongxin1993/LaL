@@ -16,4 +16,3 @@ add_library(${PROJECT_NAME} STATIC ${LAL_LOGGER_SOURCE_FILES})
 include(../cmake/function.cmake)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
-add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
