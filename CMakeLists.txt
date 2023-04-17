@@ -22,3 +22,4 @@ set(LAL_INSTALL_BIN_DIR "${CMAKE_INSTALL_BINDIR}")
 include(cmake/gtest.cmake)
 
 add_subdirectory(logger-cpp)
+add_subdirectory(socket-cpp)
