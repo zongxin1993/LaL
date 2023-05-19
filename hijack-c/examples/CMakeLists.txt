@@ -1,0 +1,1 @@
+add_examples_executable(hijack-c-example.c .)
