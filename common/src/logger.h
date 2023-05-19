@@ -1,5 +1,15 @@
+/*
+ * @Author: Zong,xin zongxin@gwm.cn
+ * @Date: 2023-05-19 00:43:54
+ * @LastEditors: Zong,xin zongxin@gwm.cn
+ * @LastEditTime: 2023-05-19 02:50:42
+ * @FilePath: /LaL/common/src/logger.h
+ * @Description:
+ */
 #ifndef __LAL_COMMON_LOGGER_H__
 #define __LAL_COMMON_LOGGER_H__
+
+#include <stdio.h>
 
 #ifdef __cplusplus
 extern "C" {
