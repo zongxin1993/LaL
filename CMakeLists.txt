@@ -23,3 +23,4 @@ include(cmake/gtest.cmake)
 
 add_subdirectory(logger-cpp)
 add_subdirectory(socket-cpp)
+add_subdirectory(logger-c)

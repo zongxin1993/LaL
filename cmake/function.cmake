@@ -1,5 +1,5 @@
 function(add_examples_executable executable_name field)
-    add_executable(${executable_name} ${field}/${executable_name}.cpp)
+    add_executable(${executable_name} ${field}/${executable_name})
     target_link_libraries(${executable_name}
         ${PROJECT_NAME}
         pthread
@@ -9,7 +9,7 @@ function(add_examples_executable executable_name field)
 endfunction()
 
 function(add_tests_executable executable_name field)
-    add_executable(${executable_name} ${field}/${executable_name}.cpp)
+    add_executable(${executable_name} ${field}/${executable_name})
     target_link_libraries(${executable_name}
         ${PROJECT_NAME}
         pthread

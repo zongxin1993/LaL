@@ -1,0 +1,1 @@
+add_examples_executable(logger-c-example.c .)
