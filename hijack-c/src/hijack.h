@@ -1,11 +1,3 @@
-/*
- * @Author: Zong,xin zongxin@gwm.cn
- * @Date: 2023-05-19 01:28:45
- * @LastEditors: Zong,xin zongxin@gwm.cn
- * @LastEditTime: 2023-05-19 03:37:04
- * @FilePath: /LaL/hijack-c/src/hijack.h
- * @Description:
- */
 #ifndef __HIJACK_C_H__
 #define __HIJACK_C_H__
 
