@@ -1,12 +1,3 @@
-/*
- * @Author: Zong,xin zongxin@gwm.cn
- * @Date: 2023-05-19 02:37:31
- * @LastEditors: Zong,xin zongxin@gwm.cn
- * @LastEditTime: 2023-05-19 05:12:45
- * @FilePath: /LaL/hijack-c/examples/hijack-c-example.c
- * @Description:
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/socket.h>

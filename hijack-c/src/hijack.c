@@ -1,11 +1,3 @@
-/*
- * @Author: Zong,xin zongxin@gwm.cn
- * @Date: 2023-05-19 01:46:56
- * @LastEditors: Zong,xin zongxin@gwm.cn
- * @LastEditTime: 2023-05-19 05:11:13
- * @FilePath: /LaL/hijack-c/src/hijack.c
- * @Description:
- */
 #include "hijack.h"
 
 #include "../../common/src/logger.h"
