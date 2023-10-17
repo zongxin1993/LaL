@@ -18,30 +18,29 @@
 #define __use_hijack
 #endif
 
-#define HIJACK(n, ret, p...)   \
-    static ret (*orig_##n)(p); \
-    ret n(p)
+#define HIJACK(n, ret, p...) \
+  static ret (*orig_##n)(p); \
+  ret n(p)
 
-#define CHECK_HIJACK(n)     \
-    do {                    \
-        hijack_init();      \
-        if (!orig_##n) {    \
-            errno = ENOSYS; \
-            return -1;      \
-        }                   \
-    } while (0)
+#define CHECK_HIJACK(n) \
+  do {                  \
+    hijack_init();      \
+    if (!orig_##n) {    \
+      errno = ENOSYS;   \
+      return -1;        \
+    }                   \
+  } while (0)
 
-#define FIND_ORIGINAL(n)                 \
-    do {                                 \
-        orig_##n = dlsym(RTLD_NEXT, #n); \
-    } while (0)
+#define FIND_ORIGINAL(n)             \
+  do {                               \
+    orig_##n = dlsym(RTLD_NEXT, #n); \
+  } while (0)
 
-static int inline use_hijack(void)
-{
+static int inline use_hijack(void) {
 #ifdef __use_hijack
-    return 1;
+  return 1;
 #else
-    return 0;
+  return 0;
 #endif
 }
 
