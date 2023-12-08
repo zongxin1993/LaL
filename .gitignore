@@ -33,6 +33,10 @@
 
 # Build
 build
+cmake-build-debug
 
 # Profile
 .cache
+
+.idea
+.vscode
