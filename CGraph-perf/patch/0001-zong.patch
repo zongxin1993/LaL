@@ -1,0 +1,43 @@
+From af863224758cf21d3a2e082c954d777ec91d4e3f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E5=AE=97=E9=91=AB?= <zongxin19930430@163.com>
+Date: Fri, 15 Dec 2023 14:49:10 +0800
+Subject: [PATCH 3/3] zong
+
+---
+ .../ThreadPool/Thread/UThreadPrimary.h         | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/src/UtilsCtrl/ThreadPool/Thread/UThreadPrimary.h b/src/UtilsCtrl/ThreadPool/Thread/UThreadPrimary.h
+index 1beb801..d435611 100644
+--- a/src/UtilsCtrl/ThreadPool/Thread/UThreadPrimary.h
++++ b/src/UtilsCtrl/ThreadPool/Thread/UThreadPrimary.h
+@@ -113,14 +113,20 @@ protected:
+      * 如果总是进入无task的状态，则开始休眠
+      * 休眠一定时间后，然后恢复执行状态，避免出现异常情况导致无法唤醒
+      */
++#define USE_SCHED_YIELD 0
+     CVoid fatWait() {
+-        cur_empty_epoch_++;
+-        std::this_thread::yield();
+-        if (cur_empty_epoch_ >= config_->primary_thread_busy_epoch_) {
+-            CGRAPH_UNIQUE_LOCK lk(mutex_);
+-            cv_.wait_for(lk, std::chrono::milliseconds(config_->primary_thread_empty_interval_));
+-            cur_empty_epoch_ = 0;
++        if (USE_SCHED_YIELD) {
++            cur_empty_epoch_++;
++            std::this_thread::yield();
++            if (cur_empty_epoch_ >= config_->primary_thread_busy_epoch_) {
++              CGRAPH_UNIQUE_LOCK lk(mutex_);
++              cv_.wait_for(lk, std::chrono::milliseconds(
++                                   config_->primary_thread_empty_interval_));
++              cur_empty_epoch_ = 0;
++            }
+         }
++        else
++            std::this_thread::sleep_for(std::chrono::nanoseconds(100));
+     }
+ 
+ 
+-- 
+2.34.1
+

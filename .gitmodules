@@ -1,0 +1,6 @@
+[submodule "CGraph-perf/CGraph"]
+	path = CGraph-perf/CGraph
+	url = https://github.com/ChunelFeng/CGraph.git
+[submodule "CGraph-perf/taskflow"]
+	path = CGraph-perf/taskflow
+	url = https://github.com/taskflow/taskflow.git
