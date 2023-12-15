@@ -34,7 +34,7 @@ index 1beb801..d435611 100644
 +            }
          }
 +        else
-+            std::this_thread::sleep_for(std::chrono::nanoseconds(100));
++            std::this_thread::sleep_for(std::chrono::nanoseconds(5));
      }
  
  

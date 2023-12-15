@@ -1,7 +1,5 @@
 #include "CGraph.h"
 
-#define DUSE_SCHED_YIELD 0
-
 using namespace CGraph;
 class MyEmptyNode : public GNode {
  public:
@@ -45,10 +43,7 @@ void tutorial_dag(long count) {
   status += pipeline->destroy();
   GPipelineFactory::remove(pipeline);
 }
-#ifdef USE_SCHED_YIELD
-#undef USE_SCHED_YIELD
-#define USE_SCHED_YIELD 0
-#endif
+
 int main(int argc, char* argv[]) {
 
   long testCount = 1000000;

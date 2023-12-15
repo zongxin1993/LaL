@@ -1,7 +1,5 @@
 #include "CGraph.h"
 
-#define DUSE_SCHED_YIELD 1
-
 using namespace CGraph;
 class MyEmptyNode : public GNode {
  public:
@@ -10,7 +8,6 @@ class MyEmptyNode : public GNode {
   }
 };
 void tutorial_dag(long count) {
-  // 简单dag场景，对应第三个例子，2thread，dag，100w次
   GPipelinePtr pipeline = GPipelineFactory::create();
   CStatus status;
   GElementPtr a,b1,b2,c1,c2,d;
