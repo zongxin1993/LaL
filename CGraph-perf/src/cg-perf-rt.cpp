@@ -19,6 +19,8 @@ void tutorial_dag(long count) {
   config.primary_thread_empty_interval_ = 1;
   config.primary_thread_busy_epoch_ = 3000;
   config.monitor_enable_ = false;    // 关闭扩缩容机制
+  config.primary_thread_policy_ = CGRAPH_THREAD_SCHED_RR;
+  config.primary_thread_priority_ = 10;
   pipeline->setUniqueThreadPoolConfig(config);
   pipeline->setAutoCheck(false);
   pipeline->registerGElement<MyEmptyNode>(&a);

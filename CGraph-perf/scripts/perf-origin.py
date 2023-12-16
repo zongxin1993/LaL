@@ -11,8 +11,7 @@ xlsxFile = "./out.xlsx"
 
 
 def demo(cpus, priority, path, testCount, rounds):
-    cmd = "taskset -c " + cpus + " chrt -r " + str(priority) + " " + path + " " + str(testCount) + " " + str(
-        rounds)
+    cmd = path + " " + str(testCount) + " " + str(rounds)
     test_process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     # 检查命令是否成功执行
     if test_process.returncode != 0:
@@ -88,6 +87,6 @@ def parse(cgraph_out, taskflow_out):
     writer.close()
 
 
-cg_out = demo("13-15", 10, cgraph_binary_path, 100000, 10000)
-tf_out = demo("13-15", 10, taskflow_binary_path, 100000, 10000)
+cg_out = demo("13-15", 10, cgraph_binary_path, 100, 100000)
+tf_out = demo("13-15", 10, taskflow_binary_path, 100, 100000)
 parse(cg_out, tf_out)

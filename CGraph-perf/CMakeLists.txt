@@ -14,6 +14,9 @@ add_executable(lal_tf_perf src/tf-perf.cpp)
 add_executable(lal_cg_perf
         $<TARGET_OBJECTS:CGraph>
         src/cg-perf.cpp)
+add_executable(lal_cg_perf_rt
+        $<TARGET_OBJECTS:CGraph>
+        src/cg-perf-rt.cpp)
 
 add_executable(lal_lttng_test src/mutex_test.cpp)
 

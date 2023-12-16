@@ -19,10 +19,10 @@ set(LAL_INSTALL_INC_DIR "${CMAKE_INSTALL_INCLUDEDIR}")
 set(LAL_INSTALL_LIB_DIR "${CMAKE_INSTALL_LIBDIR}")
 set(LAL_INSTALL_BIN_DIR "${CMAKE_INSTALL_BINDIR}")
 
-include(cmake/gtest.cmake)
-
-add_subdirectory(logger-cpp)
-add_subdirectory(socket-cpp)
-add_subdirectory(hijack-c)
-add_subdirectory(threadpool-cpp)
+#include(cmake/gtest.cmake)
+#
+#add_subdirectory(logger-cpp)
+#add_subdirectory(socket-cpp)
+#add_subdirectory(hijack-c)
+#add_subdirectory(threadpool-cpp)
 add_subdirectory(CGraph-perf)
