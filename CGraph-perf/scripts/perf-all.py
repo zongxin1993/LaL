@@ -7,7 +7,6 @@ import pandas as pds
 cgraph_binary_path = "./lal_cg_perf"
 cgraph_zong_binary_path = "./lal_cg_perf_zong"
 taskflow_binary_path = "./lal_tf_perf"
-taskflow_zong_binary_path = "./lal_tf_perf_zong"
 
 xlsxFile = "./out.xlsx"
 
@@ -57,51 +56,45 @@ def to_base_26(number):
     return base_26
 
 
-def parse(cgraph_out, taskflow_out, cgraph_z_out, taskflow_z_out):
+def parse(cgraph_out, taskflow_out, cgraph_z_out):
     cgraph_array = []
     taskflow_array = []
     cgraph_z_array = []
-    taskflow_z_array = []
 
     cg_cacu_array = []
     cg_z_cacu_array = []
     tf_cacu_array = []
-    tf_z_cacu_array = []
 
     pattern = r"[0-9]{1,7}\.[0-9]{2}"
     cgraph_array = re.findall(pattern, cgraph_out)
     taskflow_array = re.findall(pattern, taskflow_out)
     cgraph_z_array = re.findall(pattern, cgraph_z_out)
-    taskflow_z_array = re.findall(pattern, taskflow_z_out)
 
     cg_cacu_array = calculate(cgraph_array)
     tf_cacu_array = calculate(taskflow_array)
     cg_z_cacu_array = calculate(cgraph_z_array)
-    tf_z_cacu_array = calculate(taskflow_z_array)
 
     writer = pds.ExcelWriter(xlsxFile, engine='xlsxwriter')
     writer.book.add_worksheet('原始数据')
     df1 = pds.DataFrame({'cgraph': cgraph_array,
                          'taskflow': taskflow_array,
-                         'cgraph_z': cgraph_z_array,
-                         'taskflow_z': taskflow_z_array})
+                         'cgraph_z': cgraph_z_array})
     df1.to_excel(writer, sheet_name='原始数据', index=False)
 
     writer.book.add_worksheet('统计数据')
 
-    df2 = pds.DataFrame({"": ["cgraph", "taskflow", "cgraph_z","taskflow_z"],
-                         "平均值": [cg_cacu_array[0], tf_cacu_array[0], cg_z_cacu_array[0], tf_z_cacu_array[0]],
-                         "中位数": [cg_cacu_array[1], tf_cacu_array[1], cg_z_cacu_array[1], tf_z_cacu_array[1]],
-                         "最大值": [cg_cacu_array[2], tf_cacu_array[2], cg_z_cacu_array[2], tf_z_cacu_array[2]],
-                         "最小值": [cg_cacu_array[3], tf_cacu_array[3], cg_z_cacu_array[3], tf_z_cacu_array[3]],
-                         "标准差": [cg_cacu_array[4], tf_cacu_array[4], cg_z_cacu_array[4], tf_z_cacu_array[4]]})
+    df2 = pds.DataFrame({"": ["cgraph", "taskflow", "cgraph_z"],
+                         "平均值": [cg_cacu_array[0], tf_cacu_array[0], cg_z_cacu_array[0]],
+                         "中位数": [cg_cacu_array[1], tf_cacu_array[1], cg_z_cacu_array[1]],
+                         "最大值": [cg_cacu_array[2], tf_cacu_array[2], cg_z_cacu_array[2]],
+                         "最小值": [cg_cacu_array[3], tf_cacu_array[3], cg_z_cacu_array[3]],
+                         "标准差": [cg_cacu_array[4], tf_cacu_array[4], cg_z_cacu_array[4]]})
     # 写入第二个工作表
     df2.to_excel(writer, sheet_name='统计数据', index=False)
     writer.close()
 
 
-cg_out = demo("13-15", 10, cgraph_binary_path, 1000000, 200)
-tf_out = demo("13-15", 10, taskflow_binary_path, 1000000, 200)
-cg_z_out = demo("13-15", 10, cgraph_zong_binary_path, 1000000, 200)
-tf_z_out = demo("13-15", 10, taskflow_zong_binary_path, 1000000, 200)
-parse(cg_out, tf_out, cg_z_out, tf_z_out)
+cg_out = demo("13-15", 10, cgraph_binary_path, 100, 200000)
+tf_out = demo("13-15", 10, taskflow_binary_path, 100, 200000)
+cg_z_out = demo("13-15", 10, cgraph_zong_binary_path, 100, 200000)
+parse(cg_out, tf_out, cg_z_out)

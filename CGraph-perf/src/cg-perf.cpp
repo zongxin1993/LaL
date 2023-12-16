@@ -33,7 +33,7 @@ void tutorial_dag(long count) {
   status += pipeline->init();
   /** 其中流程进行计时 **/
   auto start_ts_ = std::chrono::high_resolution_clock::now();
-  for (int t = 0; t < count; t++) {
+  for (long t = 0; t < count; t++) {
     pipeline->run();
   }
   std::chrono::duration<double, std::milli> span = std::chrono::high_resolution_clock::now() - start_ts_;
